@@ -1,18 +1,16 @@
-# Makefile modelo para Teoria dos Grafos
-
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c11 -lm
+CFLAGS = -Wall -Wextra -Werror -std=c11
 TARGET = main
-SRC = *.c
-OBJ = *.o
+SRC = grafo_matriz.c grafo_lista.c main.c
+OBJ = $(SRC:.c=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
 clean:
-	rm -f $(TARGET) $(OBJ)
+	rm -f $(TARGET) $(OBJ) main.exe
 
 run: $(TARGET)
 	./$(TARGET)
